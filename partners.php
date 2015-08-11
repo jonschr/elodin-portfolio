@@ -33,6 +33,15 @@ include_once( 'lib/taxonomy.php' );
 //* Add a metabox
 include_once( 'lib/metabox/metabox.php' );
 
+//* Include the functions we'll be using in the archive templates
+include_once( 'templates/functions.php' );
+
+//* Add a widget
+include_once( 'templates/widget-grid.php' );
+
+// * Add the portfolio image size
+add_image_size( 'portfolio-small', 260, 410, true );
+
 //* Enqueue scripts and styles
 add_action( 'wp_enqueue_scripts', 'partners_add_scripts' );
 function partners_add_scripts() {
@@ -55,6 +64,7 @@ function rb_change_number_of_posts( $query ) {
 }
 
 //* Partners archive template
+add_filter( 'archive_template', 'portfolio_archive_template' ) ;
 function portfolio_archive_template( $archive_template ) {
      global $post;
 
@@ -63,9 +73,9 @@ function portfolio_archive_template( $archive_template ) {
      }
      return $archive_template;
 }
-add_filter( 'archive_template', 'portfolio_archive_template' ) ;
 
 //* Partners archive template
+add_filter( 'single_template', 'portfolio_single_template' ) ;
 function portfolio_single_template( $single_template ) {
      global $post;
 
@@ -74,13 +84,9 @@ function portfolio_single_template( $single_template ) {
      }
      return $single_template;
 }
-add_filter( 'single_template', 'portfolio_single_template' ) ;
 
-add_image_size( 'portfolio-small', 260, 410, true );
-
-/**
- * Add a redirect from the single template to the archive
- */
+//* Redirect single to archive
+add_action( 'template_redirect', 'rbp_redirect_partners_single_to_archive' );
 function rbp_redirect_partners_single_to_archive()
 {
     if ( ! is_singular( 'portfolio' ) )
@@ -89,4 +95,3 @@ function rbp_redirect_partners_single_to_archive()
     wp_redirect( get_post_type_archive_link( 'portfolio' ), 301 );
     exit;
 }
-add_action( 'template_redirect', 'rbp_redirect_partners_single_to_archive' );

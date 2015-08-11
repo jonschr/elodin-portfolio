@@ -70,32 +70,56 @@
   clear: both; }
 .full-width-content.post-type-archive-portfolio .entry {
   margin-bottom: 70px; }
-.full-width-content.post-type-archive-portfolio #TB_ajaxContent {
+.full-width-content.post-type-archive-portfolio .clear {
+  width: 100%;
+  clear: both; }
+
+#TB_ajaxContent {
   width: 100% !important;
   padding: 20px; }
-  .full-width-content.post-type-archive-portfolio #TB_ajaxContent h2 {
+  #TB_ajaxContent h2 {
     font-size: 22px;
     margin-bottom: 10px; }
-  .full-width-content.post-type-archive-portfolio #TB_ajaxContent p {
+  #TB_ajaxContent p {
     font-size: 18px;
-    margin-bottom: 10px; }
-  .full-width-content.post-type-archive-portfolio #TB_ajaxContent p:last-child {
+    margin-bottom: 10px;
+    padding: 0; }
+  #TB_ajaxContent p:last-child {
     margin-bottom: 0; }
+  #TB_ajaxContent .button {
+    font-size: 15px;
+    padding: 10px 20px;
+    border: 2px solid black;
+    background-color: transparent;
+    color: black;
+    border-radius: 3px; }
+  #TB_ajaxContent .button:hover {
+    color: white;
+    background-color: black;
+    border-color: black; }
+
 @media (max-width: 767px) {
-  .full-width-content.post-type-archive-portfolio #TB_window {
+  #TB_window {
     left: 0;
     width: 100%;
     visibility: visible;
     height: 100%;
     top: 0; }
-    .full-width-content.post-type-archive-portfolio #TB_window #TB_ajaxContent {
+    #TB_window #TB_ajaxContent {
       width: 100% !important;
       height: 90% !important; }
-  .full-width-content.post-type-archive-portfolio .portfolio-info {
+
+  .portfolio-info {
     display: none !important; }
-  .full-width-content.post-type-archive-portfolio .publication-overlay-bkg .portfolio-links {
+
+  .publication-overlay-bkg .portfolio-links {
     opacity: 1;
     top: 50%;
     margin-top: -40px; } }
+.portfolio-widget-content {
+  margin-bottom: 45px; }
+
+.portfolio-widget-title {
+  margin-bottom: 0 !important; }
 
 /*# sourceMappingURL=portfolio-style.css.map */
