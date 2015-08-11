@@ -1,0 +1,154 @@
+.full-width-content.post-type-archive-portfolio {
+	
+	.content {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.entry-title {
+		font-size: 20px;
+		text-align: left;
+		margin-bottom: 5px;
+	}
+
+	.entry-subtitle {
+		font-size: 15px;
+		font-weight: 100;
+		text-align: left;
+		margin-bottom: 5px;
+	}
+
+	span.portfolio-date {
+		font-size: 14px;
+		text-transform: uppercase;
+		letter-spacing: 3px;
+		display: block;
+		font-weight: 300;
+		text-align: left;
+		margin-bottom: 0;
+	}
+
+	span.portfolio-authors {
+		display: block;
+		text-align: left;
+		font-size: 15px;
+		line-height: 1.4em;
+		font-weight: bold;
+	}
+
+	.entry-header::after {
+		display: none;
+	}
+
+	.site-inner {
+		margin-top: 100px;
+	}
+
+	.publication-overlay-bkg {
+		position: relative;
+		display: block;
+		margin-bottom: 10px;
+		background-color: #333;
+
+		img {
+			opacity: 0.9;
+			margin: 0;
+			width: 100%;
+			height: auto !important;
+		}
+	}
+
+	.portfolio-links {
+		opacity: 0;
+		top: 0;
+		left: 0;
+		position: absolute;
+		text-align: center;
+		width: 100%;
+		transition: .3s all ease;
+		z-index: 999;
+
+		span {
+			background-color: rgba(0,0,0,0.5);
+			margin: 0 10px;
+			display: inline-block;
+			border-radius: 200px;
+			margin: 0 5px;
+			padding: 15px;
+		}
+
+		a {
+			font-size: 40px;
+			display: inline-block;
+			width: 40px;
+			height: 40px;
+			color: white;
+		}
+
+		a:hover {
+			color: #44ace8;
+		}
+	}
+
+	.publication-overlay-bkg:hover {
+		.portfolio-links {
+			opacity: 1;
+			top: 50%;
+			margin-top: -40px;
+		}
+	}
+
+	.pagination {
+		clear: both;
+	}
+
+	.entry {
+		margin-bottom: 70px;
+	}
+
+	#TB_ajaxContent {
+		width: 100% !important;
+		padding: 20px;
+
+		h2 {
+			font-size: 22px;
+			margin-bottom: 10px;
+		}
+
+		p {
+			font-size: 18px;
+			margin-bottom: 10px;
+		}
+
+		p:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	@media( max-width: 767px ) {
+		#TB_window {
+			left: 0;
+			width: 100%;
+			visibility: visible;
+			height: 100%;
+			top: 0;
+
+			#TB_ajaxContent {
+				width: 100% !important;
+				height: 90% !important;
+			}
+		}
+
+		.portfolio-info {
+			display: none !important;
+		}
+
+		.publication-overlay-bkg {
+			.portfolio-links {
+				opacity: 1;
+				top: 50%;
+				margin-top: -40px;
+			}
+		}
+	}
+}

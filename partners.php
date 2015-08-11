@@ -1,6 +1,6 @@
 <?php
 /*
-	Plugin Name: Red Blue Partners
+	Plugin Name: Red Blue Portfolio
 	Plugin URI: http://redblue.us
 	Description: Just another partners plugin
 	Version: 1.1
@@ -30,48 +30,63 @@ include_once( 'lib/admin.php' );
 //* Add a custom taxonomy
 include_once( 'lib/taxonomy.php' );
 
+//* Add a metabox
+include_once( 'lib/metabox/metabox.php' );
+
 //* Enqueue scripts and styles
 add_action( 'wp_enqueue_scripts', 'partners_add_scripts' );
 function partners_add_scripts() {
+
+    wp_enqueue_script( 'jquery-modal', plugins_url( '/js/jquery.simplemodal.js', __FILE__), array( 'jquery' ) );
     
-    wp_register_style( 'partners-style', plugins_url( '/css/partners-style.css', __FILE__) );
-    wp_enqueue_style( 'partners-style' );
+    wp_register_style( 'portfolio-style', plugins_url( '/css/portfolio-style.css', __FILE__) );
+    wp_enqueue_style( 'portfolio-style' );
+
+    wp_enqueue_style( 'dashicons' );
 
 }
 
+//* Change the number of posts
+add_action( 'pre_get_posts', 'rb_change_number_of_posts' );
+function rb_change_number_of_posts( $query ) {
+    if ( is_post_type_archive( 'portfolio' ) ) {
+        $query->set( 'posts_per_page', '-1' );
+    }
+}
+
 //* Partners archive template
-function partners_archive_template( $archive_template ) {
+function portfolio_archive_template( $archive_template ) {
      global $post;
 
-     if ( is_post_type_archive ( 'partners' ) ) {
-          $archive_template = dirname( __FILE__ ) . '/templates/archive-partners.php';
+     if ( is_post_type_archive ( 'portfolio' ) ) {
+          $archive_template = dirname( __FILE__ ) . '/templates/archive-portfolio.php';
      }
      return $archive_template;
 }
-add_filter( 'archive_template', 'partners_archive_template' ) ;
+add_filter( 'archive_template', 'portfolio_archive_template' ) ;
 
 //* Partners archive template
-function partners_single_template( $single_template ) {
+function portfolio_single_template( $single_template ) {
      global $post;
 
-     if ( is_singular ( 'partners' ) ) {
-          $single_template = dirname( __FILE__ ) . '/templates/single-partners.php';
+     if ( is_singular ( 'portfolio' ) ) {
+          $single_template = dirname( __FILE__ ) . '/templates/single-portfolio.php';
      }
      return $single_template;
 }
-add_filter( 'single_template', 'partners_single_template' ) ;
+add_filter( 'single_template', 'portfolio_single_template' ) ;
 
-add_image_size( 'partner-image', 300, 200, true );
+add_image_size( 'portfolio-small', 260, 410, true );
 
 /**
  * Add a redirect from the single template to the archive
  */
 function rbp_redirect_partners_single_to_archive()
 {
-    if ( ! is_singular( 'partners' ) )
+    if ( ! is_singular( 'portfolio' ) )
         return;
 
-    wp_redirect( get_post_type_archive_link( 'partners' ), 301 );
+    wp_redirect( get_post_type_archive_link( 'portfolio' ), 301 );
     exit;
 }
 add_action( 'template_redirect', 'rbp_redirect_partners_single_to_archive' );

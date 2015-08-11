@@ -20,18 +20,18 @@
 function rbc_register_post_types() {
 
 	$labels = array(
-		'name' => 'Partners',
-		'singular_name' => 'Partner',
+		'name' => 'Portfolio entries',
+		'singular_name' => 'Portfolio entry',
 		'add_new' => 'Add new',
-		'add_new_item' => 'Add new partner',
-		'edit_item' => 'Edit partner',
-		'new_item' => 'New partner',
-		'view_item' => 'View partner',
-		'search_items' => 'Search Partners',
-		'not_found' =>  'No partners found',
-		'not_found_in_trash' => 'No Partners found in trash',
+		'add_new_item' => 'Add new portfolio entry',
+		'edit_item' => 'Edit portfolio entry',
+		'new_item' => 'New portfolio entry',
+		'view_item' => 'View portfolio entry',
+		'search_items' => 'Search portfolio entrys',
+		'not_found' =>  'No portfolio entries found',
+		'not_found_in_trash' => 'No portfolio entries found in trash',
 		'parent_item_colon' => '',
-		'menu_name' => 'Partners'
+		'menu_name' => 'Portfolio'
 	);
 
 	$args = array(
@@ -43,14 +43,14 @@ function rbc_register_post_types() {
 		'query_var' => true,
 		'rewrite' => true,
 		'capability_type' => 'post',
-		'rewrite' => array( 'slug' => 'partners' ),
+		'rewrite' => array( 'slug' => 'portfolio' ),
 		'has_archive' => true,
 		'hierarchical' => false,
 		'menu_position' => null,
 		'menu_icon' => 'dashicons-format-image',
-		'supports' => array( 'title', 'thumbnail', 'editor', 'wps_subtitle' )
+		'supports' => array( 'title', 'thumbnail', 'editor', 'genesis-cpt-archives-settings', 'author' )
 	);
 
-	register_post_type( 'partners', $args );
+	register_post_type( 'portfolio', $args );
 }
 add_action( 'init', 'rbc_register_post_types' );
